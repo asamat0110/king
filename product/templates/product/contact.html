@@ -132,7 +132,8 @@
 				</div>
 				<div class="col-md-6 animate-box">
 					<h3>Контакт</h3>
-					<form action="#">
+					<form action="{% url 'contact' %}" method="post">
+							{% csrf_token%}
 						<div class="row form-group">
 							<div class="col-md-6">
 								<!-- <label for="fname">First Name</label> -->

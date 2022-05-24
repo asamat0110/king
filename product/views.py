@@ -1,8 +1,6 @@
-from django.shortcuts import render
-from .models import *
-
-# CRUD
-
+from django.shortcuts import render, redirect
+from .models import Contact
+from .forms import ContactForm
 
 # ---------------READ------------------------
 def index(request):
@@ -10,21 +8,19 @@ def index(request):
         request,
         'product/index.html'
     )
+
 def about(request):
     return render(
         request,
         'product/about.html'
     )
-def contact(request):
-    return render(
-        request,
-        'product/contact.html'
-    )
+
 def services(request):
     return render(
         request,
         'product/services.html'
     )
+
 def work(request):
     return render(
         request,
@@ -33,3 +29,18 @@ def work(request):
 
 
 # -----------------------------------CREATE------------------------------
+def contact(request):
+    if request.method == 'POST':
+        from ContactForm(request.POST)
+        if form.is_valid():
+            data = form.save()
+            return redirect('contact')
+    else:
+        from ContactForm()
+    context = {
+        'from_for_temp': form,
+    }
+    return render(
+        request,
+        'product/contact.html', context
+    )
