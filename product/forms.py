@@ -9,7 +9,7 @@ class ContactForm(forms.ModelForm):
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-group', 'placeholder': 'first_name'}),
             'last_name': forms.TextInput(attrs={'class': 'form-group', 'placeholder': 'last_name'}),
-            'email': forms.EmailField(attrs={'class': 'form-group', 'placeholder': 'email'}),
-            'subject_massage': forms.TextInput(attrs={'class': 'form-group', 'placeholder': 'subject_massage'}),
-            'massage': forms.TextInput(attrs={'class': 'form-group', 'placeholder': 'massage'}),
+            'email': forms.EmailInput(attrs={'class': 'form-group', 'placeholder': 'email'}),
+            'subject_massage': forms.Textarea(attrs={'class': 'form-group', 'placeholder': 'subject_massage'}),
+            'massage': forms.Textarea(attrs={'class': 'form-group', 'placeholder': 'massage'}),
         }
