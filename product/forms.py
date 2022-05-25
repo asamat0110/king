@@ -1,6 +1,23 @@
 from django import forms
 from .models import Contact
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
 
+class UserAuthenticationForm(AuthenticationForm):
+    username = forms.CharField()
+    password = forms.PasswordInput()
+
+class UserRegistrationFrom(UserCreationForm):
+    username = forms.CharField()
+    email = forms.EmailField()
+    password1 = forms.PasswordInput()
+    password2 = forms.PasswordInput()
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')
+
+class SearchForm(forms.Form):
+    search = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-group', 'placeholder': 'Search'}),)
 
 class ContactForm(forms.ModelForm):
     class Meta:

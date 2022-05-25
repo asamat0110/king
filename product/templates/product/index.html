@@ -89,7 +89,11 @@
 							</ul>
 						</li>
 						<li><a href="{% url 'contact' %}">Contact</a></li>
-						<li class="btn-cta"><a href="#"><span>Login</span></a></li>
+						{% if request.user.is_authenticated %}
+						Добро пожаловать {{ user.username }} | <a href="{% url 'logout'%}">Logout</a>
+						{% else %}
+						<li class="btn-cta"><a href="{% url 'login'%}"><span>Login</span></a></li>
+						{% endif%}
 					</ul>
 				</div>
 			</div>
@@ -104,14 +108,14 @@
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Start Your Journey</h1>
+							<h1>ПОИСК</h1>
 							<h2>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2>
 							<div class="row">
 								<form class="form-inline" id="fh5co-header-subscribe">
 									<div class="col-md-8 col-md-offset-2">
 										<div class="form-group">
 											<input type="text" class="form-control" id="email" placeholder="Enter your email">
-											<button type="submit" class="btn btn-default">Join Now</button>
+											<button type="submit" class="btn btn-default">Поиск</button>
 										</div>
 									</div>
 								</form>
