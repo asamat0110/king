@@ -31,12 +31,12 @@ def work(request):
 # -----------------------------------CREATE------------------------------
 def contact(request):
     if request.method == 'POST':
-        from ContactForm(request.POST)
+        form = ContactForm(request.POST)
         if form.is_valid():
             data = form.save()
             return redirect('contact')
     else:
-        from ContactForm()
+        form = ContactForm()
     context = {
         'from_for_temp': form,
     }
