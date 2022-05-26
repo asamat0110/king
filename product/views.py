@@ -4,7 +4,7 @@ from .forms import ContactForm, SearchForm
 from django.db.models import Q
 from .forms import UserRegistrationFrom, UserAuthenticationForm
 from django.contrib import messages
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 
 # -----------------------------------REGISTER------------------------------
 def registerUser(request):
@@ -25,10 +25,16 @@ def loginUser(request):
     if request.method == 'POST':
         form = UserAuthenticationForm(request.POST)
         if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            messages.success(request, 'Вы успешно зарегистрировались!')
-            return redirect('index')
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'], password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('login')
+                else:
+                    return redirect('Disabled account')
+            else:
+                return redirect('Invalid login')
     else:
         form = UserAuthenticationForm()
     return render(
