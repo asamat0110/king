@@ -97,7 +97,7 @@
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Happy Clients</h2>
+					<h2>Отзывы</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -106,11 +106,11 @@
 						<div class="col-md-12 animate-box">
 							<div class="testimony">
 								<div class="inner text-center">
-									<img src="{% static 'images/person3.jpg' %}" alt="testimony">
+									<img src="{{item.file.url}}" alt="testimony">
 								</div>
 								<blockquote>
-									<p>&ldquo;Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.&rdquo;</p>
-									<p class="author"><cite>&mdash; John Doe</cite></p>
+									<p>{{ item.context }}</p>
+									<p class="author"><cite>{{ item.name }}</cite></p>
 								</blockquote>
 							</div>
 						</div>

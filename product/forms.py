@@ -3,9 +3,9 @@ from .models import Contact
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
-class UserAuthenticationForm(AuthenticationForm):
+class UserAuthenticationForm(forms.Form):
     username = forms.CharField()
-    password = forms.PasswordInput()
+    password = forms.CharField(widget=forms.PasswordInput)
 
 class UserRegistrationFrom(UserCreationForm):
     username = forms.CharField()
