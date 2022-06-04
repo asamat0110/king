@@ -70,10 +70,10 @@
 		</div>
 		<div class="project-content">
 			<div class="col-half">
-				<div class="project animate-box" style="background-image:url({% static 'images/project-3.jpg' %});">
+				<div class="project animate-box" style="{{item.file.url}}">
 					<div class="desc">
-						<span>Application</span>
-						<h3>Project Name</h3>
+						<span>{{ item.kinds }}</span>
+						<h3>{{ item.project_name }}</h3>
 					</div>
 				</div>
 			</div>

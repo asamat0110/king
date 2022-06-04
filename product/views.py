@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Contact, Feedback
+from .models import Contact, Feedback, Project
 from .forms import ContactForm, SearchForm
 from django.db.models import Q
 from .forms import UserRegistrationFrom, UserAuthenticationForm
@@ -53,6 +53,17 @@ def logoutUser(request):
 
 # ---------------READ------------------------
 def index(request):
+
+    project_temp = Project.objects.all()
+    context = {
+        'project_tmp': project_temp
+    }
+    return render(
+        request,
+        'product/index.html', context
+    )
+
+def feedback(request):
     feedback_temp = Feedback.objects.all()
     context = {
         'feedback_tmp': feedback_temp
@@ -104,7 +115,7 @@ def contact(request):
 def search(request):
     search = request.GET.get('search')
     if search.isdigit():
-        info = Product.objects.filter(price=search)
+        info = Project.objects.filter(project_name=search)
     else:
-        info = Product.objects.filter(title__contains=search)
-    return render(request, 'base.html', {'products': info})
+        info = Project.objects.filter(title__contains=search)
+    return render(request, 'base.html', {'projects': info})
