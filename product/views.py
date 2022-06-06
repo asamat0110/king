@@ -113,9 +113,9 @@ def contact(request):
 
 # -----------------------------------SEARCH------------------------------
 def search(request):
-    search = request.GET.get('search')
-    if search.isdigit():
-        info = Project.objects.filter(project_name=search)
+    search1 = request.GET.get('search')
+    if search1:
+        info = Project.objects.filter(project_name=search1)
     else:
-        info = Project.objects.filter(title__contains=search)
+        info = Project.objects.filter(kinds=search1)
     return render(request, 'base.html', {'projects': info})
