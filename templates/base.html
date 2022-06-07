@@ -99,8 +99,8 @@
 										<div class="form-group">
 											<input type="text" class="form-control" name="search" placeholder="Поиск">
 												{% for item in projects%}
-													Название: {{item.project_name}}
-													Ввиды: {{item.kinds}}
+													<p style="color: #fff">Название: {{item.Project_name}}</p>
+													<p style="color: #fff">Ввиды: {{item.kinds}}</p>
 												{% endfor %}
 											<button type="submit" class="btn btn-default">Поиск</button>
 										</div>

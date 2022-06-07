@@ -53,9 +53,10 @@ def logoutUser(request):
 
 # ---------------READ------------------------
 def index(request):
-
+    feedback_temp = Feedback.objects.all()
     project_temp = Project.objects.all()
     context = {
+        'feedback_tmp': feedback_temp,
         'project_tmp': project_temp
     }
     return render(
@@ -63,15 +64,6 @@ def index(request):
         'product/index.html', context
     )
 
-def feedback(request):
-    feedback_temp = Feedback.objects.all()
-    context = {
-        'feedback_tmp': feedback_temp
-    }
-    return render(
-        request,
-        'product/index.html', context
-    )
 
 def about(request):
     return render(
@@ -86,9 +78,13 @@ def services(request):
     )
 
 def work(request):
+    work_temp = Project.objects.all()
+    context = {
+        'work_tmp': work_temp
+    }
     return render(
         request,
-        'product/work.html'
+        'product/work.html', context
     )
 
 
@@ -115,7 +111,7 @@ def contact(request):
 def search(request):
     search1 = request.GET.get('search')
     if search1:
-        info = Project.objects.filter(project_name=search1)
+        info = Project.objects.filter(Project_name=search1)
     else:
         info = Project.objects.filter(kinds=search1)
     return render(request, 'base.html', {'projects': info})

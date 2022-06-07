@@ -68,30 +68,22 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="project-content">
+			{% for item in project_tmp%}
 			<div class="col-half">
-				<div class="project animate-box" style="{{item.file.url}}">
+				<div class="project animate-box">
+					<img src="{{item.file.url}}" width="300" >
 					<div class="desc">
-						<span>{{ item.kinds }}</span>
-						<h3>{{ item.project_name }}</h3>
+						<span>{{ item.Project_name }}</span>
+						<h3>{{ item.kinds }}</h3>
 					</div>
 				</div>
 			</div>
-			<div class="col-half">
-				<div class="project-grid animate-box" style="background-image:url({% static 'images/project-5.jpg' %});">
-					<div class="desc">
-						<span>Illustration</span>
-						<h3>Project Name</h3>
-					</div>
-				</div>
-				<div class="project-grid animate-box" style="background-image:url({% static 'images/project-2.jpg' %});">
-					<div class="desc">
-						<span>Branding</span>
-						<h3>Project Name</h3>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
+
+
 	</div>
 	<div id="fh5co-testimonial" class="fh5co-bg-section">
 		<div class="container">
@@ -105,13 +97,17 @@
 					<div class="row">
 						<div class="col-md-12 animate-box">
 							<div class="testimony">
-								<div class="inner text-center">
-									<img src="{{item.file.url}}" alt="testimony">
-								</div>
-								<blockquote>
-									<p>{{ item.context }}</p>
-									<p class="author"><cite>{{ item.name }}</cite></p>
-								</blockquote>
+
+									{% for item in feedback_tmp%}
+										<div class="inner text-center">
+											<img src="{{item.file.url}}" alt="testimony">
+										</div>
+										<blockquote>
+											<p>{{ item.context }}</p>
+											<p class="author"><cite>{{ item.name }}</cite></p>
+										</blockquote>
+									{% endfor %}
+
 							</div>
 						</div>
 					</div>
